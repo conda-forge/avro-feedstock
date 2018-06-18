@@ -21,6 +21,9 @@ requirements:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
     host:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+    host:
         - snappy
         - jansson
         - xz
