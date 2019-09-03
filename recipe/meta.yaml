@@ -1,5 +1,5 @@
-{% set version = "1.8.2" %}
-{% set hash = "5d7cc534873d7fce31fb97b9abb7ccd15d6de728" %}
+{% set version = "1.9.1" %}
+{% set hash = "cb10f940d4e04f2852c46eacdc7bb13579cd6e98" %}
 
 package:
     name: avro
@@ -11,7 +11,7 @@ source:
     sha1: {{ hash }}
 
 build:
-    number: 1000
+    number: 0
     skip: True  # [win]
 
 requirements:
