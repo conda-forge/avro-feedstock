@@ -1,5 +1,5 @@
-{% set version = "1.8.2" %}
-{% set hash = "5d7cc534873d7fce31fb97b9abb7ccd15d6de728" %}
+{% set version = "1.9.2" %}
+{% set hash = "9a9de82d6f1698c7073f496883569eb57355d255" %}
 
 package:
     name: avro
@@ -11,7 +11,7 @@ source:
     sha1: {{ hash }}
 
 build:
-    number: 1000
+    number: 0
     skip: True  # [win]
 
 requirements:
@@ -38,6 +38,7 @@ test:
 about:
   home: http://hadoop.apache.org/avro
   license: Apache 2.0
+  license_file: LICENSE
   summary: 'Avro is a serialization and RPC framework.'
 
 
