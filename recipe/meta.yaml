@@ -1,44 +1,45 @@
-{% set version = "1.8.2" %}
-{% set hash = "5d7cc534873d7fce31fb97b9abb7ccd15d6de728" %}
+{% set version = "1.10.0" %}
+{% set hash = "7924e9529d1ee7d6676fdc69eb2dc8d721d5643a" %}
 
 package:
-    name: avro
-    version: {{ version }}
+  name: avro
+  version: {{ version }}
 
 source:
-    fn: avro-c-{{ version }}.tar.gz
-    url: https://archive.apache.org/dist/avro/avro-{{ version }}/c/avro-c-{{ version }}.tar.gz
-    sha1: {{ hash }}
+  fn: avro-c-{{ version }}.tar.gz
+  url: https://archive.apache.org/dist/avro/avro-{{ version }}/c/avro-c-{{ version }}.tar.gz
+  sha1: {{ hash }}
 
 build:
-    number: 1000
-    skip: True  # [win]
+  number: 0
+  skip: true  # [win]
 
 requirements:
-    build:
-        - cmake
-        - pkg-config  # [osx]
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
-    host:
-        - snappy
-        - jansson
-        - xz
-        - zlib
-    run:
-        - xz
-        - snappy
-        - jansson
-        - zlib
+  build:
+    - cmake
+    - pkg-config      # [osx]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - snappy
+    - jansson
+    - xz
+    - zlib
+  run:
+    - xz
+    - snappy
+    - jansson
+    - zlib
 
 test:
-    commands:
-        - test -f ${PREFIX}/lib/libavro.a  # [unix]
+  commands:
+    - test -f ${PREFIX}/lib/libavro.a      # [unix]
 
 about:
   home: http://hadoop.apache.org/avro
   license: Apache 2.0
-  summary: 'Avro is a serialization and RPC framework.'
+  license_file: LICENSE
+  summary: Avro is a serialization and RPC framework.
 
 
 extra:
