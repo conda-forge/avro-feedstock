@@ -1,45 +1,47 @@
-{% set version = "1.8.2" %}
-{% set hash = "5d7cc534873d7fce31fb97b9abb7ccd15d6de728" %}
+{% set name = "avro" %}
+{% set version = "1.11.2" %}
 
 package:
-    name: avro
-    version: {{ version }}
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-    fn: avro-c-{{ version }}.tar.gz
-    url: https://archive.apache.org/dist/avro/avro-{{ version }}/c/avro-c-{{ version }}.tar.gz
-    sha1: {{ hash }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/avro-{{ version }}.tar.gz
+  sha256: 53dcd5bffccb9a72136f08d0b18771795eaf4eefb028bbaaed5f4e1787f0e268
 
 build:
-    number: 1000
-    skip: True  # [win]
+  noarch: python
+  entry_points:
+    - avro = avro.__main__:main
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
-    build:
-        - cmake
-        - pkg-config  # [osx]
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
-    host:
-        - snappy
-        - jansson
-        - xz
-        - zlib
-    run:
-        - xz
-        - snappy
-        - jansson
-        - zlib
+  host:
+    - python >3.7
+    - setuptools >=40.8.0
+    - wheel
+    - pip
+  run:
+    - python >3.7
 
 test:
-    commands:
-        - test -f ${PREFIX}/lib/libavro.a  # [unix]
+  imports:
+    - avro
+  commands:
+    - pip check
+    - avro --help
+    #- test -f ${PREFIX}/lib/libavro.a  # [unix]
+  requires:
+    - pip
 
 about:
-  home: http://hadoop.apache.org/avro
-  license: Apache 2.0
-  summary: 'Avro is a serialization and RPC framework.'
-
+  home: https://avro.apache.org/
+  summary: Avro is a serialization and RPC framework.
+  license: Apache-2.0
+  license_file:
+    - avro/LICENSE
+    - avro/NOTICE
 
 extra:
   recipe-maintainers:
