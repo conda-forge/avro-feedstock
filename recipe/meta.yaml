@@ -1,5 +1,5 @@
 {% set name = "avro" %}
-{% set version = "1.11.3" %}
+{% set version = "1.12.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/avro-{{ version }}.tar.gz
-  sha256: 3393bb5139f9cf0791d205756ce1e39a5b58586af5b153d6a3b5a199610e9d17
+  sha256: cad9c53b23ceed699c7af6bddced42e2c572fd6b408c257a7d4fc4e8cf2e2d6b
 
 build:
   noarch: python
